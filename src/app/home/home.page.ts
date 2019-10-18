@@ -37,16 +37,16 @@ export class HomePage {
     return obj;
   }
 
-  public onChange(event) {
-    if(event.detail.value == "en") {
-      alert("Sorry, this is a prototype we need $ to take it to production!")
-    }else if(event.detail.value == "it") {
-      alert("Siamo spiacenti, questo è un prototipo di cui abbiamo bisogno $ per portarlo in produzione!")
-    }else if(event.detail.value == "de") {
-      alert("Entschuldigung, dies ist ein Prototyp, den wir brauchen, um ihn in Produktion zu bringen!")
+  public onChange(value) {
+    if(value == "en") {
+      alert("Sorry, this is a prototype we need $ to take it to production :) ")
+    }else if(value == "it") {
+      alert("Siamo spiacenti, questo è un prototipo di cui abbiamo bisogno $ per portarlo in produzione :) ")
+    }else if(value == "de") {
+      alert("Entschuldigung, dies ist ein Prototyp, den wir brauchen, um ihn in Produktion zu bringen :) ")
+    }else if(value == "fr") {
+      alert("Vous êtes chanceux c'est votre langue, mais nous avons tout de même besoin de $ pour pousser ce prototype en production :) ")
     }
-    event.detail.value = "fr";
-    this.langue = "fr";
   }
 
   public uploadPicture(event) {

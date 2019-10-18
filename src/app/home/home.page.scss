@@ -1,8 +1,7 @@
 
-.header-img {
-	height: 30vh;
-	width: auto;
-	align-items: center;
+.header-img  {
+    margin: 20px;
+    width: 200px;
 }
 
 .box {
@@ -58,7 +57,7 @@
 
 
             &::after {
-				content: 'Cliquer ici si vous voulez nous envoyer une photo de votre plaie';
+				content: 'Cliquer ici pour nous envoyer une photo';
 				color: white;
 				position: absolute;
 				margin: 5px;

@@ -1,65 +1,68 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      e-ISO (HUG)
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 <ion-content>
-  <ion-card class="welcome-card">
-    <ion-img class="header-img" src="assets/hug_0.jpg"></ion-img>
-    <ion-card-header>
+  <div class="row">
+      <div style="display:inline-block">
+        <ion-img class="header-img" src="assets/hug_0.png"></ion-img>
+      </div>
+  </div>
+  <ion-card>
+  <ion-card-header>
       <ion-card-title>Enquête sur la suite de votre intervention chirurgicale aux HUG</ion-card-title>
-    </ion-card-header>
+  </ion-card-header>
   </ion-card>
-   <ion-item>
-    <ion-label>Langue du questionnaire</ion-label>
-    <ion-select (ionChange)="onChange($event)" [(ngModel)]="langue" placeholder="Choisir la langue">
-      <ion-select-option value="fr">Français</ion-select-option>
-      <ion-select-option value="en">Anglais</ion-select-option>
-      <ion-select-option value="de">Allemand</ion-select-option>
-      <ion-select-option value="it">Italien</ion-select-option>
-    </ion-select>
-  </ion-item>
+  <div class="ion-text-right" style="margin: 20px;" style="position: relative;">
+      <button (click)="onChange('fr')">
+        <span style="text-decoration: underline; font-weight: bold;">
+          <a href="">FR</a>
+        </span>
+      </button>
+      <button (click)="onChange('en')">EN</button>
+      <button (click)="onChange('de')">DE</button>
+      <button (click)="onChange('it')">IT</button>
+  </div>
   <ion-list>
-    <ion-radio-group [(ngModel)]="survey.plaieouverte">
-      <ion-list-header>
-        Est-ce que votre plaie s’est ré-ouverte où il y a un écoulement ?
-      </ion-list-header>
-      <ion-item>
-        <ion-label>Oui</ion-label>
-        <ion-radio value="Oui"></ion-radio>
-      </ion-item>
-      <ion-item>
-        <ion-label>Non</ion-label>
-        <ion-radio value="Non"></ion-radio>
-      </ion-item>
-      <ion-item>
-        <ion-label>Je ne suis pas sûr(e)</ion-label>
-        <ion-radio value="PasSur"></ion-radio>
-      </ion-item>
-    </ion-radio-group>
-    <ion-radio-group [(ngModel)]="survey.infection">
-      <ion-list-header>
-        Est-ce qu’il y a eu une infection de la plaie opératoire?
-      </ion-list-header>
-      <ion-item>
-        <ion-label>Oui</ion-label>
-        <ion-radio value="Oui"></ion-radio>
-      </ion-item>
-      <ion-item>
-        <ion-label>Non</ion-label>
-        <ion-radio value="Non"></ion-radio>
-      </ion-item>
-      <ion-item>
-        <ion-label>Je ne suis pas sûr(e)</ion-label>
-        <ion-radio value="PasSur"></ion-radio>
-      </ion-item>
-    </ion-radio-group>
+    <ion-card>
+      <ion-card-header>
+          <ion-card-subtitle>Est-ce que votre plaie s’est ré-ouverte ou y a-t-il eu un écoulement ?</ion-card-subtitle>
+      </ion-card-header>
+      <ion-radio-group [(ngModel)]="survey.plaieouverte">
+        <ion-item>
+          <ion-label>Oui</ion-label>
+          <ion-radio value="Oui"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Non</ion-label>
+          <ion-radio value="Non"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Je ne suis pas sûr(e)</ion-label>
+          <ion-radio value="PasSur"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+          <ion-card-subtitle>Est-ce qu’il y a eu une infection de la plaie suite à l'opération?</ion-card-subtitle>
+      </ion-card-header>
+      <ion-radio-group [(ngModel)]="survey.infection">
+        <ion-item>
+          <ion-label>Oui</ion-label>
+          <ion-radio value="Oui"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Non</ion-label>
+          <ion-radio value="Non"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Je ne suis pas sûr(e)</ion-label>
+          <ion-radio value="PasSur"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+          <ion-card-subtitle>Avez-vous pris des antibiotiques?</ion-card-subtitle>
+      </ion-card-header>
     <ion-radio-group [(ngModel)]="survey.antibiotics">
-      <ion-list-header>
-        Avez-vous pris des antibiotiques?
-      </ion-list-header>
       <ion-item>
         <ion-label>Oui</ion-label>
         <ion-radio value="Oui"></ion-radio>
@@ -73,36 +76,41 @@
         <ion-radio value="PasSur"></ion-radio>
       </ion-item>
     </ion-radio-group>
-    <ion-radio-group [(ngModel)]="survey.readmission">
-      <ion-list-header>
-        Avez-vous dû être ré-hospitalisé ?
-      </ion-list-header>
-      <ion-item>
-        <ion-label>Oui</ion-label>
-        <ion-radio value="Oui"></ion-radio>
-      </ion-item>
-      <ion-item>
-        <ion-label>Non</ion-label>
-        <ion-radio value="Non"></ion-radio>
-      </ion-item>
-      <ion-item>
-        <ion-label>Je ne suis pas sûr(e)</ion-label>
-        <ion-radio value="PasSur"></ion-radio>
-      </ion-item>
-    </ion-radio-group>
+    </ion-card>
+    <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Avez-vous dû être ré-hospitalisé ?</ion-card-subtitle>
+        </ion-card-header>
+        <ion-radio-group [(ngModel)]="survey.readmission">
+        <ion-item>
+          <ion-label>Oui</ion-label>
+          <ion-radio value="Oui"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Non</ion-label>
+          <ion-radio value="Non"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Je ne suis pas sûr(e)</ion-label>
+          <ion-radio value="PasSur"></ion-radio>
+        </ion-item>
+        </ion-radio-group>
+    </ion-card>
+    <ion-card>
     <ion-radio-group [(ngModel)]="survey.photo">
-      <ion-list-header>
-        Dans le cas où vous avez n'êtes pas sûr sur certains points, pouvez-nous envoyer des photos de votre plaie?
-      </ion-list-header>
-      <ion-item>
-        <ion-label>Oui</ion-label>
-        <ion-radio value="Oui"></ion-radio>
-      </ion-item>
-      <ion-item>
-        <ion-label>Non</ion-label>
-        <ion-radio value="Non"></ion-radio>
-      </ion-item>
-    </ion-radio-group>
+        <ion-card-header>
+          <ion-card-subtitle>Pouvez-vous nous envoyer une photo de votre cicatrice?</ion-card-subtitle>
+        </ion-card-header>
+        <ion-item>
+          <ion-label>Oui</ion-label>
+          <ion-radio value="Oui"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Non</ion-label>
+          <ion-radio value="Non"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-card>
      <div *ngIf="survey.photo == 'Oui'" class="box">
         <div class="preview">
           <img [src]="url" alt="">
@@ -114,12 +122,14 @@
         </div>
       </div>
     <!-- Textarea in an item with a placeholder -->
-    <ion-list-header>
-      Avez-vous des commentaires additionnels?
-    </ion-list-header>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Avez-vous des commentaires additionnels?</ion-card-subtitle>
+    </ion-card-header>
     <ion-item>
       <ion-textarea [(ngModel)]="survey.commentaire" placeholder="écrire ici les commentaires"></ion-textarea>
     </ion-item>
+  </ion-card>
   </ion-list>
   <!-- <input type="file" multiple #mulupload (change)="upload($event)" placeholder="upload a from web file"/>-->
   <ion-button (click)="sendResponses($event)" expand="block">Envoyer les réponses</ion-button>
