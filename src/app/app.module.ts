@@ -1,3 +1,5 @@
+import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
@@ -18,18 +20,20 @@ import { AngularFireDatabaseModule } from "angularfire2/database";
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), 
+    AngularFireDatabaseModule,
+    AngularFireStorageModule,
     AngularFireModule.initializeApp({
       apiKey: "AIzaSyDxPjj1BFTbRBEn3J6K2zU-8pXPcz0un20",
       databaseURL: "https://eiso-hug.firebaseio.com",
       projectId: "eiso-hug",
       storageBucket: "eiso-hug.appspot.com"
     }),
-    AngularFireDatabaseModule,
     AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    AngularFirestore,
      Camera //here
   ],
   bootstrap: [AppComponent]

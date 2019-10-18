@@ -9,13 +9,22 @@
   <ion-card class="welcome-card">
     <ion-img class="header-img" src="assets/hug_0.jpg"></ion-img>
     <ion-card-header>
-      <ion-card-title>Questionnaire suite à votre intérvention chirurgical aux HUGs</ion-card-title>
+      <ion-card-title>Enquête sur la suite de votre intervention chirurgicale aux HUG</ion-card-title>
     </ion-card-header>
   </ion-card>
+   <ion-item>
+    <ion-label>Langue du questionnaire</ion-label>
+    <ion-select (ionChange)="onChange($event)" [(ngModel)]="langue" placeholder="Choisir la langue">
+      <ion-select-option value="fr">Français</ion-select-option>
+      <ion-select-option value="en">Anglais</ion-select-option>
+      <ion-select-option value="de">Allemand</ion-select-option>
+      <ion-select-option value="it">Italien</ion-select-option>
+    </ion-select>
+  </ion-item>
   <ion-list>
-    <ion-radio-group [(ngModel)]="survey.satisfait">
+    <ion-radio-group [(ngModel)]="survey.plaieouverte">
       <ion-list-header>
-        Avez-vous été satisfait de votre opération?
+        Est-ce que votre plaie s’est ré-ouverte où il y a un écoulement ?
       </ion-list-header>
       <ion-item>
         <ion-label>Oui</ion-label>
@@ -24,11 +33,15 @@
       <ion-item>
         <ion-label>Non</ion-label>
         <ion-radio value="Non"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Je ne suis pas sûr(e)</ion-label>
+        <ion-radio value="PasSur"></ion-radio>
       </ion-item>
     </ion-radio-group>
-    <ion-radio-group [(ngModel)]="survey.fievre">
+    <ion-radio-group [(ngModel)]="survey.infection">
       <ion-list-header>
-        Avez-vous eu de la fièvre suite à votre intérvention?
+        Est-ce qu’il y a eu une infection de la plaie opératoire?
       </ion-list-header>
       <ion-item>
         <ion-label>Oui</ion-label>
@@ -37,11 +50,49 @@
       <ion-item>
         <ion-label>Non</ion-label>
         <ion-radio value="Non"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Je ne suis pas sûr(e)</ion-label>
+        <ion-radio value="PasSur"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+    <ion-radio-group [(ngModel)]="survey.antibiotics">
+      <ion-list-header>
+        Avez-vous pris des antibiotiques?
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Oui</ion-label>
+        <ion-radio value="Oui"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Non</ion-label>
+        <ion-radio value="Non"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Je ne suis pas sûr(e)</ion-label>
+        <ion-radio value="PasSur"></ion-radio>
       </ion-item>
     </ion-radio-group>
     <ion-radio-group [(ngModel)]="survey.readmission">
       <ion-list-header>
-        Avez-vous été hospitalisé suite à votre chirurgie?
+        Avez-vous dû être ré-hospitalisé ?
+      </ion-list-header>
+      <ion-item>
+        <ion-label>Oui</ion-label>
+        <ion-radio value="Oui"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Non</ion-label>
+        <ion-radio value="Non"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Je ne suis pas sûr(e)</ion-label>
+        <ion-radio value="PasSur"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+    <ion-radio-group [(ngModel)]="survey.photo">
+      <ion-list-header>
+        Dans le cas où vous avez n'êtes pas sûr sur certains points, pouvez-nous envoyer des photos de votre plaie?
       </ion-list-header>
       <ion-item>
         <ion-label>Oui</ion-label>
@@ -52,6 +103,16 @@
         <ion-radio value="Non"></ion-radio>
       </ion-item>
     </ion-radio-group>
+     <div *ngIf="survey.photo == 'Oui'" class="box">
+        <div class="preview">
+          <img [src]="url" alt="">
+        </div>
+        <div class="uploadbtn">
+          <label>
+            <input (change)="uploadImage($event)" type="file" class="image-upload" accept="image/*">
+          </label>
+        </div>
+      </div>
     <!-- Textarea in an item with a placeholder -->
     <ion-list-header>
       Avez-vous des commentaires additionnels?
@@ -59,8 +120,8 @@
     <ion-item>
       <ion-textarea [(ngModel)]="survey.commentaire" placeholder="écrire ici les commentaires"></ion-textarea>
     </ion-item>
-
   </ion-list>
   <!-- <input type="file" multiple #mulupload (change)="upload($event)" placeholder="upload a from web file"/>-->
   <ion-button (click)="sendResponses($event)" expand="block">Envoyer les réponses</ion-button>
+  
 </ion-content>
