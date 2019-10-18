@@ -5,7 +5,6 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
   <ion-card class="welcome-card">
     <ion-img class="header-img" src="assets/hug_0.jpg"></ion-img>
@@ -14,46 +13,54 @@
     </ion-card-header>
   </ion-card>
   <ion-list>
-    <ion-radio-group>
+    <ion-radio-group [(ngModel)]="survey.satisfait">
       <ion-list-header>
         Avez-vous été satisfait de votre opération?
       </ion-list-header>
       <ion-item>
         <ion-label>Oui</ion-label>
-        <ion-radio value="yes"></ion-radio>
+        <ion-radio value="Oui"></ion-radio>
       </ion-item>
       <ion-item>
         <ion-label>Non</ion-label>
-        <ion-radio value="no"></ion-radio>
+        <ion-radio value="Non"></ion-radio>
       </ion-item>
     </ion-radio-group>
-    <ion-radio-group>
+    <ion-radio-group [(ngModel)]="survey.fievre">
       <ion-list-header>
         Avez-vous eu de la fièvre suite à votre intérvention?
       </ion-list-header>
       <ion-item>
         <ion-label>Oui</ion-label>
-        <ion-radio value="yes"></ion-radio>
+        <ion-radio value="Oui"></ion-radio>
       </ion-item>
       <ion-item>
         <ion-label>Non</ion-label>
-        <ion-radio value="no"></ion-radio>
+        <ion-radio value="Non"></ion-radio>
       </ion-item>
     </ion-radio-group>
-    <ion-radio-group>
+    <ion-radio-group [(ngModel)]="survey.readmission">
       <ion-list-header>
         Avez-vous été hospitalisé suite à votre chirurgie?
       </ion-list-header>
       <ion-item>
         <ion-label>Oui</ion-label>
-        <ion-radio value="yes"></ion-radio>
+        <ion-radio value="Oui"></ion-radio>
       </ion-item>
       <ion-item>
         <ion-label>Non</ion-label>
-        <ion-radio value="no"></ion-radio>
+        <ion-radio value="Non"></ion-radio>
       </ion-item>
     </ion-radio-group>
+    <!-- Textarea in an item with a placeholder -->
+    <ion-list-header>
+      Avez-vous des commentaires additionnels?
+    </ion-list-header>
+    <ion-item>
+      <ion-textarea [(ngModel)]="survey.commentaire" placeholder="écrire ici les commentaires"></ion-textarea>
+    </ion-item>
+
   </ion-list>
   <!-- <input type="file" multiple #mulupload (change)="upload($event)" placeholder="upload a from web file"/>-->
-  <ion-button expand="block">Envoyer les réponses</ion-button>
+  <ion-button (click)="sendResponses($event)" expand="block">Envoyer les réponses</ion-button>
 </ion-content>
